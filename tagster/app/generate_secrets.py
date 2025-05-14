@@ -1,6 +1,7 @@
 import os
 
-secrets_dir = '.streamlit'
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+secrets_dir = os.path.join(BASE_DIR, '.streamlit')
 secrets_path = os.path.join(secrets_dir, 'secrets.toml')
 
 # Check if the directory exists, if not - create it
