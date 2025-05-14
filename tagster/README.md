@@ -107,6 +107,69 @@
   - Webhooki dla powiadomień
   - Integracja z systemami CMS
 
+## Integracja Komponentów
+Po wdrożeniu planowanych funkcjonalności i integracji z bazą FAQ, system zapewni kompleksową analizę obrazów z wykorzystaniem wszystkich dostępnych źródeł informacji:
+
+### Pełna Analiza Obrazu
+- **Analiza Wizualna przez AWS Rekognition**:
+  - Szczegółowa detekcja obiektów i scen
+  - Identyfikacja osób i ich liczby (planowane)
+  - Analiza emocji i gestów (planowane)
+  - Wykrywanie tekstu w obrazach (planowane)
+
+- **Generowanie Opisu przez LLM**:
+  - Naturalny, kontekstowy opis sceny
+  - Możliwość edycji i dostosowania opisu przez użytkownika
+  - Automatyczna korekta i ulepszanie opisów (planowane)
+  - Wielojęzyczne opisy (planowane)
+
+- **System Tagowania**:
+  - Automatyczne generowanie tagów na podstawie analizy
+  - Inteligentne sugestie tagów bazujące na kontekście
+  - Hierarchiczna kategoryzacja tagów
+  - System popularności i trendów tagów
+
+### Integracja z Bazą Wiedzy FAQ
+- **Automatyczne Powiązania**:
+  - Generowanie kontekstowych pytań na podstawie wykrytych elementów
+  - Dynamiczne łączenie tagów z odpowiednimi sekcjami FAQ
+  - Proaktywne sugestie powiązanych informacji
+
+- **Wzbogacanie Analizy**:
+  - Dodawanie kontekstowej wiedzy dziedzinowej
+  - Łączenie podobnych przypadków i analiz
+  - Uczenie się na podstawie historycznych analiz
+  - Personalizowane sugestie na podstawie preferencji użytkownika
+
+### Końcowa Synteza przez LLM
+- **Integracja Źródeł**:
+  - Łączenie wyników analizy wizualnej z wiedzą z FAQ
+  - Generowanie spójnej, kompleksowej analizy
+  - Kontekstualne wykorzystanie wszystkich dostępnych informacji
+  - Adaptacyjne dostosowanie poziomu szczegółowości
+
+### Korzyści dla Użytkownika
+- **Natychmiastowa Analiza**:
+  - Szybkie przetwarzanie i analiza obrazów
+  - Automatyczne generowanie wszystkich potrzebnych informacji
+  - Możliwość interaktywnej modyfikacji wyników
+
+- **Kontekstowa Wiedza**:
+  - Dostęp do powiązanych informacji z bazy wiedzy
+  - Automatyczne sugestie i podpowiedzi
+  - Personalizowane rekomendacje
+
+- **Spójna Prezentacja**:
+  - Przejrzysty i intuicyjny interfejs
+  - Hierarchiczna organizacja informacji
+  - Możliwość dostosowania widoku do preferencji
+
+- **Głębokie Zrozumienie**:
+  - Kompleksowa analiza zawartości obrazu
+  - Kontekstowe powiązania z bazą wiedzy
+  - Możliwość eksploracji powiązanych tematów
+  - Ciągłe uczenie się i doskonalenie systemu
+
 ## Ograniczenia Obecnego Rozwiązania
 1. Ograniczenia dokładności analizy obrazów przez AWS Rekognition
 2. Koszty związane z użyciem API
