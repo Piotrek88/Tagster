@@ -1,23 +1,23 @@
 import streamlit as st
 import os
-from dotenv import load_dotenv
 from PIL import Image
 import logging
 from image_analyzer import analyze_image
 from faq_handler import get_faq_answer
 import re
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, '..', 'data')
+LOG_PATH = os.path.join(DATA_DIR, 'app.log')
+
 # Logger configuration
-if not os.path.exists('data'):
-    os.makedirs('data')
+if not os.path.exists(DATA_DIR):
+    os.makedirs(DATA_DIR)
 logging.basicConfig(
-    filename='data/app.log',
+    filename=LOG_PATH,
     level=logging.INFO,
     format='%(asctime)s %(levelname)s:%(message)s'
 )
-
-# Load environment variables
-load_dotenv()
 
 st.markdown(
     "<h1 style='text-align: center; color: red; font-size: 70px;'>Tagster</h1>",

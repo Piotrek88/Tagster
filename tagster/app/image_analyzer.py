@@ -4,6 +4,7 @@ from PIL import Image
 import io
 import os
 import logging
+import streamlit as st
 
 logger = logging.getLogger(__name__)
 
@@ -66,7 +67,7 @@ def analyze_image(image, only_description=False, custom_description=None):
                 num_persons += len(label.get('Instances', []))
         context += f"\nLiczba wykrytych osób/dzieci: {num_persons}\n"
 
-        client = openai.OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+        client = openai.OpenAI(api_key=st.secrets['OPENAI_API_KEY'])
 
         if only_description:
             # Generate description only

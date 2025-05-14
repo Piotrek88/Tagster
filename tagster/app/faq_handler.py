@@ -4,13 +4,14 @@ import json
 import numpy as np
 from typing import List, Dict, Tuple
 import logging
+import streamlit as st
 
 logger = logging.getLogger(__name__)
 
 def get_embedding(text: str) -> List[float]:
     """Generates embedding for the given text using OpenAI API."""
     try:
-        client = openai.OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+        client = openai.OpenAI(api_key=st.secrets['OPENAI_API_KEY'])
         response = client.embeddings.create(
             input=text,
             model="text-embedding-ada-002"
@@ -68,7 +69,7 @@ def get_faq_answer(question: str) -> str:
         for q, a in faq_data.items():
             context += f"P: {q}\nO: {a}\n\n"
         
-        client = openai.OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+        client = openai.OpenAI(api_key=st.secrets['OPENAI_API_KEY'])
         response = client.chat.completions.create(
             model="gpt-4",
             messages=[
