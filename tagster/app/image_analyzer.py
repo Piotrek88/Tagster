@@ -6,6 +6,10 @@ import os
 import logging
 import streamlit as st
 
+os.environ.pop("HTTP_PROXY", None)
+os.environ.pop("HTTPS_PROXY", None)
+os.environ.pop("NO_PROXY", None)
+
 logger = logging.getLogger(__name__)
 
 # AWS credentials configuration at the beginning of the file
