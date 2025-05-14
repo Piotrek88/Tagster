@@ -19,6 +19,9 @@ logging.basicConfig(
     format='%(asctime)s %(levelname)s:%(message)s'
 )
 
+print("HTTP_PROXY:", os.environ.get("HTTP_PROXY"))
+print("HTTPS_PROXY:", os.environ.get("HTTPS_PROXY"))
+
 st.markdown(
     "<h1 style='text-align: center; color: red; font-size: 70px;'>Tagster</h1>",
     unsafe_allow_html=True
