@@ -40,12 +40,12 @@ def analyze_image(image, only_description=False, custom_description=None):
         img_byte_arr = resize_image_to_limit(image)
                       
         # Initialize AWS client with credentials
-        rekognition = boto3.client(
-            'rekognition',
+        session = boto3.Session(
             aws_access_key_id=st.secrets["AWS_ACCESS_KEY_ID"],
             aws_secret_access_key=st.secrets["AWS_SECRET_ACCESS_KEY"],
             region_name=st.secrets["AWS_DEFAULT_REGION"]
         )
+        rekognition = session.client('rekognition')
         
         # AWS connection test
         try:
