@@ -1,0 +1,18 @@
+{
+    "Jakie formaty zdjęć są obsługiwane?": "Aplikacja obsługuje formaty JPG, JPEG i PNG.",
+    "Jak działa analiza zdjęć?": "Zdjęcie jest analizowane przez AWS Rekognition, który wykrywa obiekty i sceny. Następnie GPT-4 generuje opis i tagi na podstawie wykrytych elementów.",
+    "Czy mogę przesłać kilka zdjęć naraz?": "Obecnie aplikacja obsługuje jedno zdjęcie na raz.",
+    "Jak dokładna jest analiza zdjęć?": "Dokładność zależy od jakości zdjęcia i wykrytych elementów. Używamy AWS Rekognition z minimalnym progiem pewności 70%.",
+    "Czy mogę zadać pytanie o inne tematy?": "Tak, możesz zadać dowolne pytanie, ale system najlepiej radzi sobie z pytaniami związanymi z analizą zdjęć i funkcjonalnością aplikacji.",
+    "Jak długo trwa analiza zdjęcia?": "Analiza zdjęcia trwa zazwyczaj kilka sekund, w zależności od obciążenia serwera i wielkości pliku.",
+    "Czy moje zdjęcia są gdzieś zapisywane?": "Nie, przesłane zdjęcia są wykorzystywane wyłącznie do analizy i nie są zapisywane na serwerze.",
+    "Jakie są ograniczenia rozmiaru przesyłanego zdjęcia?": "Maksymalny rozmiar przesyłanego zdjęcia to 5 MB.",
+    "Czy aplikacja rozpoznaje tekst na zdjęciach?": "Obecna wersja nie obsługuje rozpoznawania tekstu (OCR), ale planujemy dodać tę funkcję w przyszłości.",
+    "Czy mogę korzystać z aplikacji na urządzeniu mobilnym?": "Tak, aplikacja jest dostępna przez przeglądarkę internetową, także na urządzeniach mobilnych.",
+    "Czy aplikacja rozpoznaje twarze na zdjęciach?": "Aplikacja może wykrywać obecność twarzy, ale nie identyfikuje osób.",
+    "Czy mogę pobrać wygenerowany opis i tagi?": "Tak, po analizie zdjęcia możesz skopiować opis i tagi lub pobrać je w formie pliku tekstowego.",
+    "Jakie są koszty korzystania z aplikacji?": "Aplikacja jest obecnie dostępna bezpłatnie w ramach testów.",
+    "Czy mogę usunąć swoje dane z systemu?": "Tak, jeśli Twoje dane zostały zapisane, możesz poprosić o ich usunięcie kontaktując się z administratorem.",
+    "Jakie języki obsługuje aplikacja?": "Aplikacja generuje opisy i tagi w języku polskim.",
+    "Czy mogę zadawać pytania w innych językach?": "Aplikacja w wersji testowej używa tylko języka polskiego."
+}
