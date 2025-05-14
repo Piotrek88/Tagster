@@ -2,7 +2,7 @@ import streamlit as st
 import os
 from PIL import Image
 import logging
-from image_analyzer import analyze_image
+from tagster.app.image_analyzer import analyze_image
 from faq_handler import get_faq_answer
 import re
 
