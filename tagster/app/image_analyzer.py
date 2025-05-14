@@ -6,10 +6,6 @@ import os
 import logging
 import streamlit as st
 
-os.environ.pop("HTTP_PROXY", None)
-os.environ.pop("HTTPS_PROXY", None)
-os.environ.pop("NO_PROXY", None)
-
 logger = logging.getLogger(__name__)
 
 # AWS credentials configuration at the beginning of the file
@@ -54,7 +50,7 @@ def analyze_image(image, only_description=False, custom_description=None):
              
         # Client initialization
         try:
-            rekognition = boto3.client('rekognition', config=boto3.session.Config(proxies={}))
+            rekognition = boto3.client('rekognition')
             st.write("Klient AWS został utworzony")
         except Exception as aws_init_error:
             st.error(f"Błąd podczas tworzenia klienta AWS: {str(aws_init_error)}")
