@@ -50,7 +50,7 @@ def analyze_image(image, only_description=False, custom_description=None):
              
         # Client initialization
         try:
-            rekognition = boto3.client('rekognition')
+            rekognition = boto3.client('rekognition', config=boto3.session.Config(proxies={}))
             st.write("Klient AWS został utworzony")
         except Exception as aws_init_error:
             st.error(f"Błąd podczas tworzenia klienta AWS: {str(aws_init_error)}")
