@@ -8,6 +8,9 @@ import streamlit as st
 
 logger = logging.getLogger(__name__)
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FAQ_PATH = os.path.join(BASE_DIR, 'data', 'faq.json')
+
 def get_embedding(text: str) -> List[float]:
     """Generates embedding for the given text using OpenAI API."""
     try:
@@ -28,7 +31,7 @@ def cosine_similarity(a: List[float], b: List[float]) -> float:
 def load_faq_data() -> Tuple[Dict[str, str], Dict[str, List[float]]]:
     """Loads FAQ data and their embeddings."""
     try:
-        with open('data/faq.json', 'r', encoding='utf-8') as f:
+        with open(FAQ_PATH, 'r', encoding='utf-8') as f:
             faq_data = json.load(f)
         
         # Generate embeddings for questions
