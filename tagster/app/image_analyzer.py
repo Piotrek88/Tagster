@@ -8,6 +8,11 @@ import streamlit as st
 
 logger = logging.getLogger(__name__)
 
+# AWS credentials configuration at the beginning of the file
+os.environ['AWS_ACCESS_KEY_ID'] = st.secrets["AWS_ACCESS_KEY_ID"]
+os.environ['AWS_SECRET_ACCESS_KEY'] = st.secrets["AWS_SECRET_ACCESS_KEY"]
+os.environ['AWS_DEFAULT_REGION'] = st.secrets["AWS_DEFAULT_REGION"]
+
 def resize_image_to_limit(image, max_bytes=5*1024*1024):
     # Try to reduce the image size until it is below the limit
     quality = 90
@@ -38,21 +43,27 @@ def analyze_image(image, only_description=False, custom_description=None):
     try:
         # Automatic size reduction
         img_byte_arr = resize_image_to_limit(image)
-                      
-        # Initialize AWS client with credentials
-        session = boto3.Session(
-            aws_access_key_id=st.secrets["AWS_ACCESS_KEY_ID"],
-            aws_secret_access_key=st.secrets["AWS_SECRET_ACCESS_KEY"],
-            region_name=st.secrets["AWS_DEFAULT_REGION"]
-        )
-        rekognition = session.client('rekognition')
         
-        # AWS connection test
+        # Debug info
+        st.write(f"Rozmiar obrazu: {len(img_byte_arr)} bajtów")
+        st.write(f"Region AWS: {os.environ.get('AWS_DEFAULT_REGION')}")
+             
+        # Client initialization
+        try:
+            rekognition = boto3.client('rekognition')
+            st.write("Klient AWS został utworzony")
+        except Exception as aws_init_error:
+            st.error(f"Błąd podczas tworzenia klienta AWS: {str(aws_init_error)}")
+            logger.error(f"AWS init error: {str(aws_init_error)}")
+            return None, None
+
+        # Connection test
         try:
             rekognition.list_collections()
             st.write("Połączenie z AWS działa poprawnie")
         except Exception as aws_error:
             st.error(f"Błąd połączenia z AWS: {str(aws_error)}")
+            logger.error(f"AWS connection error: {str(aws_error)}")
             return None, None
 
         # Image analysis by AWS Rekognition
