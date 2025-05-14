@@ -41,8 +41,15 @@ def analyze_image(image, only_description=False, custom_description=None):
         if len(img_byte_arr) > 5 * 1024 * 1024:
             raise ValueError("Nie udało się zmniejszyć obrazu poniżej 5 MB. Zmień rozdzielczość lub skompresuj zdjęcie ręcznie.")
 
+        # Initialize AWS client with credentials from Streamlit secrets
+        rekognition = boto3.client(
+            'rekognition',
+            aws_access_key_id=st.secrets["AWS_ACCESS_KEY_ID"],
+            aws_secret_access_key=st.secrets["AWS_SECRET_ACCESS_KEY"],
+            region_name=st.secrets["AWS_DEFAULT_REGION"]
+        )
+
         # Image analysis by AWS Rekognition
-        rekognition = boto3.client('rekognition')
         response = rekognition.detect_labels(
             Image={'Bytes': img_byte_arr},
             MaxLabels=20,
@@ -113,5 +120,10 @@ def analyze_image(image, only_description=False, custom_description=None):
         tags = [tag.strip().strip('.') for tag in raw_tags.split(',') if tag.strip()]
         return description, tags
     except Exception as e:
-        logging.error(f"Błąd w analyze_image: {e}")
-        raise
+        logger.error(f"Błąd w analyze_image: {str(e)}")
+        if "AccessDenied" in str(e) or "InvalidSignatureException" in str(e):
+            raise Exception("Błąd konfiguracji AWS. Sprawdź ustawienia dostępu.")
+        elif "InvalidImageFormat" in str(e):
+            raise Exception("Nieprawidłowy format zdjęcia. Spróbuj użyć innego pliku.")
+        else:
+            raise Exception(f"Wystąpił błąd podczas analizy zdjęcia: {str(e)}")
